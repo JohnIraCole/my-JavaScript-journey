@@ -4,40 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        #box{
+            background-color: gray;
+            border: 9px solid black;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            color: aqua;
+            height: 44px;
+            width: 195px;
+        }
+        .buttons{
+            padding: 10px;
+            margin: 4px;
+        }
+    </style>
+
 </head>
 <body>
     
-    <button onclick="
-        nums += 1;
-        console.log(`1`);
-        ">1
-    </button>
-       
-    <button onclick = "
-        nums += 2;
-        console.log(`2`);"
-        > 2 
-    </button>
-
-    <button onclick = "
-        nums += 3;
-        console.log(`3`);"
-        > 3
-    </button>
-
-    <button onclick="
-        console.log(`+`);
-        "> + 
-    </button>
-
-    <button onclick="
-        console.log(`= ${calculation}`);
-        "> =
+    <div id="box">
+        <button class = "buttons" onclick="
+            count += 1;
+            calculation += 1;
+            console.log(`${calculation}`);
+            ">1
+        </button>
+        
+        <button class = "buttons" onclick = "
+            count += 2
+            calculation += 2;
+            console.log(`${calculation}`);"
+            > 2 
         </button>
 
+        <button class = "buttons" onclick = "
+            count += 3;
+            calculation += 3;
+            console.log(`${calculation}`);"
+            > 3
+        </button>
+
+        <button class = "buttons" onclick="
+            calculation += ' + ';
+            console.log(`${calculation}`);
+            "> + 
+        </button>
+
+        <button class = "buttons" onclick="
+            console.log(count);
+            alert(count);
+            calculation = '';
+
+            //Solution to count numbers in string
+            /*calculation = eval(calculation);
+            console.log(calculation);*/
+            
+            "> =
+        </button>
+    </div>
+    
     <script>
-        let nums;
-        let calculation = 0;
+        let calculation = "";
+        let count = 0;; 
     </script>
 </body>
 </html>
