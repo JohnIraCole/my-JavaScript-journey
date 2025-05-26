@@ -61,11 +61,11 @@
         <button id = "Tail" onclick = "
             guess = 'tails';
             if(guess === result){
-                console.log(`It was${result}`);
+                console.log(`It was ${result}`);
                 alert('You Win');
             }
             else{
-                console.log(`It was${result}`);
+                console.log(`It was ${result}`);
                 alert('You Loss');
             }
         "> Tails </button>
@@ -81,97 +81,44 @@
     ">Show Quantity</button>
 
     <button onclick="
-      if(cartQuantity >= 10){
-        cartQuantity = cartQuantity;
-        console.log('The cart is full');
-      }
-      else{
-        cartQuantity++;
-        console.log(`Cart quantity: ${cartQuantity}`);
-      }
+        updateCartQuantity(1);    
     ">Add to Cart</button>
 
     <br><br>
       
     <button onclick="
-      if(cartQuantity >= 10){
-        cartQuantity = cartQuantity;
-        console.log('The cart is full');
-      }
-      else{
-        cartQuantity += 2;
-        console.log(`Cart quantity: ${cartQuantity}`);
-      }
+        updateCartQuantity(2);
     ">+2</button>
 
     <button onclick="
-      if(cartQuantity >= 8){
-        cartQuantity = cartQuantity;
-        console.log('The cart is full');
-      }
-      else{
-        cartQuantity = cartQuantity + 3;
-        console.log(`Cart quantity: ${cartQuantity}`);
-      }
+        updateCartQuantity(3);    
     ">+3</button>
 
     <button onclick="
-      if(cartQuantity >= 7){
-        cartQuantity = cartQuantity;
-        console.log('The cart is full');
-      }
-      else{
-        cartQuantity += 4;
-        console.log(`Cart quantity: ${cartQuantity}`);
-      }
+        updateCartQuantity(4); 
     ">+4</button>
 
     <button onclick="
-      if(cartQuantity >= 6){
-        cartQuantity = cartQuantity;
-        console.log('The cart is full');
-      }
-      else{
-        cartQuantity += 5;
-        console.log(`Cart quantity: ${cartQuantity}`);
-      }
+        updateCartQuantity(5);  
     ">+5</button>
 
     <br><br>
 
     <button onclick="
-    if(cartQuantity <= 1){
-        cartQuantity = cartQuantity;
-        console.log('Not enough items in the cart');
-    }
-    else{
-      cartQuantity -= 2;
-      console.log(`Cart quantity: ${cartQuantity}`);
-    }
+
+        updateCartQuantity(-2);
+    
     ">-2</button>
 
     <button onclick="
-    if(cartQuantity <= 2){
-        cartQuantity = cartQuantity;
-        console.log('Not enough items in the cart');
-    }
-    else{
-      cartQuantity -= 3;
-      console.log(`Cart quantity: ${cartQuantity}`);
-    }
+        updateCartQuantity(-3);  
     ">-3</button>
 
     <br><br>
 
     <button onclick="
-    if(cartQuantity <= 0){
-        cartQuantity = cartQuantity;
-        console.log('Not enough items in the cart');
-    }
-    else{
-      cartQuantity--;
-      console.log(`Cart quantity: ${cartQuantity}`);
-    }">Remove from cart</button>
+      updateCartQuantity(-1);
+    ">Remove from cart</button>
 
     <button onclick="
       cartQuantity = 0;
@@ -184,6 +131,21 @@
         let guess = '';
         let result = '';
         let cartQuantity = 0;
+
+        function updateCartQuantity(clicked){
+          if(cartQuantity + clicked > 10){            
+            cartQuantity = cartQuantity;
+            console.log('The cart is full');
+            return;
+          }
+          if(cartQuantity + clicked < 0){
+            cartQuantity = cartQuantity;
+            console.log('Not enough items in the cart');
+            return;
+          }
+          cartQuantity += clicked;
+          console.log(`Cart quantity: ${cartQuantity}`);
+        }
     </script>
 </body>
 </html>
