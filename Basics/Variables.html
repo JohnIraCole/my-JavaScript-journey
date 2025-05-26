@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simple Calc</title>
 
     <style>
         #box{
@@ -27,23 +27,17 @@
     
     <div id="box">
         <button class = "buttons" onclick="
-            count += 1;
-            calculation += 1;
-            console.log(`${calculation}`);
+            updateCalculation(1);
             ">1
         </button>
         
         <button class = "buttons" onclick = "
-            count += 2
-            calculation += 2;
-            console.log(`${calculation}`);"
-            > 2 
+            updateCalculation(2);
+            "> 2 
         </button>
 
         <button class = "buttons" onclick = "
-            count += 3;
-            calculation += 3;
-            console.log(`${calculation}`);"
+            updateCalculation(3);"
             > 3
         </button>
 
@@ -54,21 +48,34 @@
         </button>
 
         <button class = "buttons" onclick="
-            console.log(count);
-            alert(count);
+            calculation = eval(calculation);
+            console.log(calculation);
+            alert(calculation);
             calculation = '';
-
-            //Solution to count numbers in string
-            /*calculation = eval(calculation);
-            console.log(calculation);*/
             
             "> =
         </button>
+
+        
     </div>
     
     <script>
         let calculation = "";
-        let count = 0;; 
+        
+        function updateCalculation(clicked){
+            if(clicked === 1){
+                calculation += 1;
+                console.log(`${calculation}`);
+            }
+            else if(clicked === 2){
+                calculation += 2;
+                console.log(`${calculation}`);
+            }
+            else if(clicked === 3){
+                calculation += 3;
+                console.log(`${calculation}`);
+            }
+        }
     </script>
 </body>
 </html>
