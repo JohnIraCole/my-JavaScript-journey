@@ -63,18 +63,8 @@
         let calculation = "";
         
         function updateCalculation(clicked){
-            if(clicked === 1){
-                calculation += 1;
-                console.log(`${calculation}`);
-            }
-            else if(clicked === 2){
-                calculation += 2;
-                console.log(`${calculation}`);
-            }
-            else if(clicked === 3){
-                calculation += 3;
-                console.log(`${calculation}`);
-            }
+            calculation += clicked;
+            console.log(`${calculation}`);
         }
     </script>
 </body>
