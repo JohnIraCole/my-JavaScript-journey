@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
+
+    <style>
+        .text{
+            letter-spacing: 2px;
+        }
+    </style>
 </head>
 <body>
 
-    <p>Rock-Paper-Scissors</p>
+    <p class="text">Rock-Paper-Scissors</p>
 
     <button onclick="
         computerChoice = computerMove();
@@ -24,9 +30,20 @@
         play('Scissors');
     ">Scissors</button>
 
+    <button onclick = "
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+    ">Reset Button</button>
     <script>
         let result = '';
 
+        const score = {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        };
+        
         function computerMove(){
             const randomMove = Math.random();
             
@@ -84,7 +101,18 @@
                     result = ('Its a draw!');
                 }
             }
-            alert(`You picked ${playerMove}, the computer picked ${computerChoice},${result}`);
+
+            if(result === 'You win!'){
+                score.wins += 1;
+            }
+            else if(result === 'You lose!'){
+                score.losses += 1;
+            }
+            else{
+                score.ties += 1;
+            }
+            alert(`You picked ${playerMove}, the computer picked ${computerChoice},${result}
+            Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`);
         }
     </script>
 
