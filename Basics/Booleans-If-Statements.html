@@ -40,36 +40,49 @@
             else{
                 result = 'tails'
             }
-
         ">Toss the Coin</button>
 
         <p id="text">Guess</p>
 
         <button id = "Head" onclick = "
-            guess = 'heads';
-            if(guess === result){
-                console.log(`It was ${result}`);
-                alert('You Win');
-            }
-            else{
-                console.log(`It was${result}`);
-                alert('You Loss');
-            }
-        
+            playGame('heads');      
         "> Heads </button>
 
         <button id = "Tail" onclick = "
-            guess = 'tails';
+            playGame('tails');
+        "> Tails </button>
+
+        <!--This Area doesnt work atm-->
+        <button onclick = "
+            score = '';
+            localStorage.setItem('showScore', score);
+        ">reset score</button>
+
+    <script>
+        let score = JSON.parse(localStorage.getItem('showScore')) || {
+                wins: 0,
+                losses: 0
+            };
+
+        function playGame(guess){
             if(guess === result){
-                console.log(`It was ${result}`);
-                alert('You Win');
+                console.log(`It is ${result}`);
+                alert(`You win!
+Wins: ${score.wins}, Losses: ${score.losses}`);
+                score.wins++;
             }
             else{
                 console.log(`It was ${result}`);
-                alert('You Loss');
+                alert(`You lose!
+Wins: ${score.wins}, Losses: ${score.losses}`);
+                score.losses++;
             }
-        "> Tails </button>
 
+            localStorage.setItem('showScore', JSON.stringify(score));
+
+            console.log(score);
+        }
+    </script>
 
     
     <br><br><br>
