@@ -51,20 +51,27 @@
             calculation = eval(calculation);
             console.log(calculation);
             alert(calculation);
-            calculation = '';
-            
+
+            localStorage.setItem('displayScore',calculation);
             "> =
         </button>
 
+        <button onclick ="
+            calculation = '';
+            localStorage.setItem('displayScore',calculation);
+        ">Clear</button>
         
     </div>
     
     <script>
-        let calculation = "";
-        
+        let calculation = 
+        (localStorage.getItem('displayScore')) || '';
+
         function updateCalculation(clicked){
             calculation += clicked;
             console.log(`${calculation}`);
+
+            localStorage.setItem('displayScore', (calculation));
         }
     </script>
 </body>
