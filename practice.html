@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Area</title>
+</head>
+<body>
+    
+    <button onclick="
+        swapButtons('heads');
+        coinTossButton('heads');       
+        //coinTossButton(swapButtons('tails'));
+    " class="headButton">heads</button>
+
+    <button onclick = " 
+        swapButtons('tails');      
+        coinTossButton('tails');       
+        //coinTossButton(swapButtons('heads'));
+    " class = "tailButton">tails</button>
+
+    <p class = "test">Press the buttons</p>
+
+    <p class = "result"></p>
+
+    <input 
+        class="nameHolder" 
+        placeholder="Enter name"
+        onkeydown="
+            submitButtonName(event);"
+    >
+
+    <button 
+        onclick="displayName();
+    ">Submit</button>
+
+    <p class="name">Please tell us you name</p>
+
+    <input 
+        class="inputClass" 
+        placeholder="Type anything"
+        onkeyup="
+            realTimeDisplay(event);
+        "
+    >
+    <p class="pClass">Type something</p>
+
+    <script>
+
+            //Function for realTimeDisplay
+        function realTimeDisplay(event){
+            console.log('typing');
+           
+            //1st method.
+            const thing = document.querySelector('.inputClass').value;
+            document.querySelector('.pClass').innerHTML = `${thing}`;
+
+
+        }
+                //Function for name
+        function submitButtonName(event){
+            console.log('typing');
+            if(event.key === 'Enter'){
+                displayName();
+            }
+        }
+        function displayName(){
+            const nameHold = document.querySelector('.nameHolder').value;
+
+            document.querySelector('.name').innerText = `You name is: ${nameHold}`;
+        }
+
+        //Functions for coin toss 
+        function swapButtons(clicked){
+            const headElement = document.querySelector('.headButton');
+
+            const tailElement = document.querySelector('.tailButton');
+
+            if(clicked === 'heads'){
+                headElement.innerText = 'tails';
+            }
+            else{
+                tailElement.innerText = 'heads';
+            }
+        }
+        function coinTossButton(clicked){
+            const coinElement = document.querySelector('.test');
+
+            if(clicked === 'heads'){
+                coinElement.innerHTML=`You chose: ${clicked}`;
+            }
+            else{
+                coinElement.innerHTML=`You chose: ${clicked}`;
+            }
+        }
+    </script>
+</body>
+</html>
