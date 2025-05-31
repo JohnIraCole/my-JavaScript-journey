@@ -35,14 +35,16 @@
     <p class="showScore"></p>
 
     <button onclick="
-        resetScore();
+        resetScore(); 
     ">Reset Button</button>
 
     <script>
         let result = '';
         
-        let score = localStorage.getItem('displayScore') || {
-            wins: 0, losses: 0, ties: 0 
+        let score = JSON.parse(localStorage.getItem('displayScore')) || {
+            wins: 0,
+            losses: 0,
+            ties: 0
         };
 
         updateScore();
@@ -106,33 +108,33 @@
             }
 
             if(result === 'You win!'){
-                score.wins += 1;
+                score.wins++;
             }
             else if(result === 'You lose!'){
-                score.losses += 1;
+                score.losses++;
             }
             else{
-                score.ties += 1;
+                score.ties++;
             }
 
-            updateScore();
-
+            // Show player the results of the game after pressing a button
             document.querySelector('.showMove').innerHTML = result;
-
             document.querySelector('.showResult').innerHTML = `You: ${playerMove} - Computer: ${computerChoice}`;
+
+            updateScore();
             
         localStorage.setItem('displayScore', JSON.stringify(score));
 
         }
 
+        // Displays score in webpage
         function updateScore(){
             document.querySelector('.showScore').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`;
         }
 
+        // Resets the score back to Zero
         function resetScore(){
-            score.wins = 0;
-            score.losses = 0;
-            score.ties = 0;
+            score = { wins: 0, losses: 0, ties: 0 };
             localStorage.removeItem('displayScore');
             updateScore();
         }

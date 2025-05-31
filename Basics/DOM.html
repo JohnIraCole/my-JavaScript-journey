@@ -16,7 +16,7 @@
     <p>Orders under $40 = +$10 shipping.</p>
     <p>Order over 40$ = FREE shipping.</p>
     
-    <input class = "calculateButton" placeholder="Enter Amount" onkeydown="
+    <input class = "calculateHolder" placeholder="Enter Amount" onkeydown="
         calculateEnter(event);
     ">
     <button onclick="
@@ -24,8 +24,66 @@
     " >Calculate</button>
 
     <p class = "result"></p>
+    <br>
+
+    <button onclick="
+        swapButtons('heads');
+        coinTossButton('heads');       
+        //coinTossButton(swapButtons('tails'));
+    " class="headButton">heads</button>
+
+    <button onclick = " 
+        swapButtons('tails');      
+        coinTossButton('tails');       
+        //coinTossButton(swapButtons('heads'));
+    " class = "tailButton">tails</button>
+
+    <p class = "test">Press the buttons</p>
+
+    <br>
+
+    <input class="nameHolder" placeholder="Enter name">
+
+    <button onclick="
+        displayName();
+    ">Submit</button>
+
+    <p class="name">Please tell us you name</p>
+
     <script>       
 
+        //Function for name
+        function displayName(){
+            const nameHold = document.querySelector('.nameHolder').value;
+
+            document.querySelector('.name').innerText = `You name is: ${nameHold}`;
+        }
+
+        //Functions for coin toss 
+        function swapButtons(clicked){
+            const headElement = document.querySelector('.headButton');
+
+            const tailElement = document.querySelector('.tailButton');
+
+            if(clicked === 'heads'){
+                headElement.innerText = 'tails';
+            }
+            else{
+                tailElement.innerText = 'heads';
+            }
+        }
+        function coinTossButton(clicked){
+            const coinElement = document.querySelector('.test');
+
+            if(clicked === 'heads'){
+                coinElement.innerHTML=`You chose: ${clicked}`;
+            }
+            else{
+                coinElement.innerHTML=`You chose: ${clicked}`;
+            }
+        }
+
+        //Functions for Amazon Shipping Calculator
         function calculateEnter(event){
             console.log('typing');
             if(event.key === 'Enter'){
@@ -33,7 +91,7 @@
         }
         }
         function calculateValue(){
-            const costElement = document.querySelector('.calculateButton');
+            const costElement = document.querySelector('.calculateHolder');
             
             let cost = Number(costElement.value);
 
@@ -45,7 +103,7 @@
             console.log(cost);
         }
 
-
+        //Function for subscribe button
         function subscribe(clicked){
             const buttonElement = document.querySelector('#subscribeButton');
 
