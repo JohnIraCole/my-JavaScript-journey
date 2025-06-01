@@ -4,28 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM</title>
+    <style>
+        body{
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .subscribeButton{
+            border: none;
+            border-radius: 50px;
+            padding: 10px 15px 10px 15px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .nowSubscribed{
+            background-color: red;
+            color: black;
+            font-weight: bold;
+        }
+        .orderInput{
+            padding: 11px;
+            font-size: 15px;
+            border: solid black;
+        }
+        #calculateButton{
+            border: none;
+            padding: 15px;
+            background-color: green;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 <body>
+
     <p>My YouTube Channel</p>
-    <button id = "subscribeButton" 
+    <button class = "subscribeButton" 
         onclick="        
         subscribe();
     ">Subscribe</button>
+    <br><br><br>
 
     <p>Amazon Shipping Calculator</p>
     <p>Orders under $40 = +$10 shipping.</p>
-    <p>Order over 40$ = FREE shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
     
     <input 
-        class = "calculateHolder"              placeholder="Enter Amount" 
+        class = "orderInput"              placeholder="Enter Amount" 
         onkeydown="
         submitAmountName(event);
     ">
     <button onclick="
         calculateValue();
-    " >Calculate</button>
+    "id="calculateButton" >Calculate</button>
 
-    <p class = "result"></p>
+    <p class = "displayAmount"></p>
     <br>
 
     <script>
@@ -37,8 +73,9 @@
                 calculateValue();
             }
         }
+        
         function calculateValue(){
-            const costElement = document.querySelector('.calculateHolder');
+            const costElement = document.querySelector('.orderInput');
             
             let cost = Number(costElement.value);
 
@@ -48,19 +85,21 @@
 
             let finalCost = Math.round(cost);
 
-            document.querySelector('.result').innerHTML = `$${finalCost}`;
+            document.querySelector('.displayAmount').innerHTML = `$${finalCost}`;
             console.log(finalCost);
         }
 
         //Function for subscribe button
         function subscribe(clicked){
-            const buttonElement = document.querySelector('#subscribeButton');
+            const buttonElement = document.querySelector('.subscribeButton');
 
             if(buttonElement.innerText === 'Subscribe'){
-                buttonElement.innerText = 'Subscribed';
+                buttonElement.innerHTML = 'Subscribed';
+                buttonElement.classList.add('nowSubscribed');
             }
             else{
-                buttonElement.innerText = 'Subscribe';
+                buttonElement.innerHTML = 'Subscribe';
+                buttonElement.classList.remove('nowSubscribed');
             }
             return buttonElement;
         }
