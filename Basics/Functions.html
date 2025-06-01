@@ -6,9 +6,45 @@
     <title>Rock-Paper-Scissors</title>
 
     <style>
+
+        body{
+            background-color: rgb(25,25,25);
+            color: white;
+
+        }
         .text{
             letter-spacing: 2px;
+            font-size: 30px;
+            font-weight: bold;
         }
+        .playButtons{
+            border: 3px solid white;
+            background-color: transparent;
+            border-radius: 60px;
+            width: 120px;
+            height: 120px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .icons{
+            height: 50px;
+            width: 50px;
+        }
+        .showResult{
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 50px;
+        }
+        .showScore{
+            margin-top: 60px;
+            font-weight: bold;
+        }
+        .resetButton{
+            padding: 8px 15px;
+            font-size: 15px;
+            border: none;
+        }
+
     </style>
 </head>
 <body>
@@ -17,26 +53,38 @@
 
     <button onclick="
         computerChoice = computerMove();
-        play('Rock');
-   ">Rock</button>
+            play('Rock');
+        "class="playButtons"
+   >    
+        <img src="images/rock-emoji.png" class="icons">
+    </button>
 
     <button onclick="
         computerChoice = computerMove();
-        play('Paper');
-    ">Paper</button>
+            play('Paper');
+        "class="playButtons"
+    >
+        <img src="images/paper-emoji.png"class="icons">
+    </button>
 
     <button onclick="
         computerChoice = computerMove();
-        play('Scissors');
-    ">Scissors</button>
+            play('Scissors');
+        "class="playButtons"
+    >
+        <img src="images/scissors-emoji.png"class="icons">
+    </button>
 
-    <p class="showMove"></p>
     <p class="showResult"></p>
+    <p class="showMove">
+
+    </p>
     <p class="showScore"></p>
 
     <button onclick="
-        resetScore(); 
-    ">Reset Button</button>
+        resetScore();" 
+        class="resetButton"
+    >Reset Score</button>
 
     <script>
         let result = '';
@@ -118,8 +166,12 @@
             }
 
             // Show player the results of the game after pressing a button
-            document.querySelector('.showMove').innerHTML = result;
-            document.querySelector('.showResult').innerHTML = `You: ${playerMove} - Computer: ${computerChoice}`;
+            document.querySelector('.showResult').innerHTML = result;
+            
+            document.querySelector('.showMove').innerHTML = `You
+        <img src="images/${playerMove}-emoji.png" class="icons">
+        <img src="images/${computerChoice}-emoji.png" class="icons"> 
+        Computer`;
 
             updateScore();
             
