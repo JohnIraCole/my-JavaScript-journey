@@ -6,16 +6,6 @@
     <title>Simple Calc</title>
 
     <style>
-        #box{
-            background-color: gray;
-            border: 9px solid black;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            color: aqua;
-            height: 44px;
-            width: 195px;
-        }
         .buttons{
             padding: 10px;
             margin: 4px;
@@ -24,55 +14,130 @@
 
 </head>
 <body>
-    
-    <div id="box">
+
+    <p class = "showCalculation"></p>
+
+    <p>
         <button class = "buttons" onclick="
-            updateCalculation(1);
+            updateCalculation('1');
             ">1
         </button>
         
         <button class = "buttons" onclick = "
-            updateCalculation(2);
+            updateCalculation('2');
             "> 2 
         </button>
 
         <button class = "buttons" onclick = "
-            updateCalculation(3);"
+            updateCalculation('3');"
             > 3
         </button>
 
         <button class = "buttons" onclick="
-            calculation += ' + ';
-            console.log(`${calculation}`);
+            updateCalculation(' + ');
             "> + 
+        </button>
+    </p> 
+    <p>
+        <button class = "buttons" onclick="
+            updateCalculation('4');
+            "> 4
+        </button>
+
+        <button class = "buttons" onclick="
+            updateCalculation('5');
+            "> 5
+        </button>
+
+        <button class = "buttons" onclick="
+            updateCalculation('6');
+            "> 6
+        </button>
+        
+        <button class = "buttons" onclick="
+            updateCalculation(' - ');
+            "> -
+        </button>
+    </p>
+
+    <p>
+        <button class = "buttons" onclick="
+            updateCalculation('7');
+            "> 7
+        </button>
+
+        <button class = "buttons" onclick="
+            updateCalculation('8');
+            "> 8
+        </button>
+
+        <button class = "buttons" onclick="
+            updateCalculation('9');
+            "> 9
+        </button>
+        
+        <button class = "buttons" onclick="
+            updateCalculation(' * ');
+            "> *
+        </button>
+    </p>
+
+    <p>
+
+        <button class = "buttons" onclick="
+            updateCalculation('0');
+            "> 0
+        </button>
+
+        <button class = "buttons" onclick="
+            updateCalculation(' . ');
+            "> .
+        </button>
+
+        <button class = "buttons" onclick="
+            updateCalculation(' / ');
+            "> /
         </button>
 
         <button class = "buttons" onclick="
             calculation = eval(calculation);
             console.log(calculation);
-            alert(calculation);
 
             localStorage.setItem('displayScore',calculation);
-            "> =
-        </button>
 
+            displayCalculation();
+            "> =
+        </button>     
+    </p>    
+        <br>
         <button onclick ="
             calculation = '';
             localStorage.setItem('displayScore',calculation);
+            displayCalculation();
         ">Clear</button>
-        
-    </div>
+
     
     <script>
         let calculation = 
         (localStorage.getItem('displayScore')) || '';
 
         function updateCalculation(clicked){
+
+            displayCalculation();
+            
             calculation += clicked;
+
             console.log(`${calculation}`);
 
             localStorage.setItem('displayScore', (calculation));
+
+            displayCalculation();
+
         }
+
+        function displayCalculation() {
+            document.querySelector('.showCalculation').innerHTML = `Cart quantity: ${calculation}`;
+      }
     </script>
 </body>
 </html>
