@@ -138,6 +138,8 @@ Wins: ${score.wins}, Losses: ${score.losses}`);
       console.log('Cart was reset.');
       console.log(`Cart quantity: ${cartQuantity}`);
     ">Reset Cart</button>
+
+    <p class="cartQuantityHolder">Cart Quantity:</p>
     
         
     <script>        
@@ -146,6 +148,9 @@ Wins: ${score.wins}, Losses: ${score.losses}`);
         let cartQuantity = 0;
 
         function updateCartQuantity(clicked){
+            
+           let cartQantElement = document.querySelector('.cartQuantityHolder');
+           
           if(cartQuantity + clicked > 10){            
             cartQuantity = cartQuantity;
             console.log('The cart is full');
@@ -158,6 +163,8 @@ Wins: ${score.wins}, Losses: ${score.losses}`);
           }
           cartQuantity += clicked;
           console.log(`Cart quantity: ${cartQuantity}`);
+
+          cartQantElement.innerHTML = `Cart Quantity: ${cartQuantity}`;
         }
     </script>
 </body>
