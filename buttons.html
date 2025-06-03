@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Buttons</title>
+    <style>
+        body{
+            font-family: Arial;
+            background-color: rgb(25 25 25);
+        }
+        .cartButton{
+            border: none;
+            font-size: 15px;
+            background-color: rgb(255, 261,20);
+            padding: 5px 28px 5px 28px;
+            border-radius: 15px;      
+        }
+        .uberButton{
+            border: none;
+            padding: 8px 15px 8px 15px;
+            border-radius: 5px;
+        }
+        .gray{
+            background-color: rgb(230, 230, 230);
+            font-weight: bold;
+        }
+        .black{
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <button class="cartButton">Add to cart</button>
+    <p>
+        <button class="uberButton black">Request now</button>
+        <button class="uberButton gray">Schedule for later</button>
+    </p>
+    <button class="button extra">Test</button>
+
+    <script>
+        console.log(document.querySelector('.button').classList.contains('extra'));
+        
+    </script>
+</body>
+</html>
