@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Calc</title>
 
-    <style>
-        .buttons{
-            padding: 10px;
-            margin: 4px;
-        }
-    </style>
+    <link
+        rel="stylesheet"
+        href="styles/calculator.css"
+    >
 
 </head>
 <body>
 
-    <p class = "showCalculation"></p>
+    <p class = "showCalculation">:></p>
 
     <p>
         <button class = "buttons" onclick="
@@ -33,7 +31,7 @@
             > 3
         </button>
 
-        <button class = "buttons" onclick="
+        <button class = "buttons operators" onclick="
             updateCalculation(' + ');
             "> + 
         </button>
@@ -54,7 +52,7 @@
             "> 6
         </button>
         
-        <button class = "buttons" onclick="
+        <button class = "buttons operators" onclick="
             updateCalculation(' - ');
             "> -
         </button>
@@ -76,7 +74,7 @@
             "> 9
         </button>
         
-        <button class = "buttons" onclick="
+        <button class = "buttons operators" onclick="
             updateCalculation(' * ');
             "> *
         </button>
@@ -95,11 +93,6 @@
         </button>
 
         <button class = "buttons" onclick="
-            updateCalculation(' / ');
-            "> /
-        </button>
-
-        <button class = "buttons" onclick="
             calculation = eval(calculation);
             console.log(calculation);
 
@@ -107,37 +100,22 @@
 
             displayCalculation();
             "> =
-        </button>     
+        </button>  
+        
+        <button class = "buttons operators" onclick="
+            updateCalculation(' / ');
+            "> /
+        </button>
+
     </p>    
         <br>
         <button onclick ="
             calculation = '';
             localStorage.setItem('displayScore',calculation);
             displayCalculation();
-        ">Clear</button>
+        "class="buttons clear">Clear</button>
 
     
-    <script>
-        let calculation = 
-        (localStorage.getItem('displayScore')) || '';
-
-        function updateCalculation(clicked){
-
-            displayCalculation();
-            
-            calculation += clicked;
-
-            console.log(`${calculation}`);
-
-            localStorage.setItem('displayScore', (calculation));
-
-            displayCalculation();
-
-        }
-
-        function displayCalculation() {
-            document.querySelector('.showCalculation').innerHTML = `Cart quantity: ${calculation}`;
-      }
-    </script>
+    <script src="scripts/calculator.js">    </script>
 </body>
 </html>
