@@ -10,6 +10,9 @@
             font-family: Arial;
             background-color: rgb(25 25 25);
         }
+        button{
+            cursor: pointer;
+        }
         .cartButton{
             border: none;
             font-size: 15px;
@@ -32,6 +35,38 @@
             font-weight: bold;
             margin-right: 15px;
         }
+        .gaming{
+            border: none;
+            background-color: black;
+            padding: 10px 15px 10px 15px;
+            color: white;
+            border-radius: 10px 10px 10px 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .music{
+            border: none;
+            background-color: black;
+            padding: 10px 15px 10px 15px;
+            color: white;
+            border-radius: 10px 10px 10px 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .tech{
+            border: none;
+            background-color: black;
+            padding: 10px 15px 10px 15px;
+            color: white;
+            border-radius: 10px 10px 10px 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .nowClicked{
+            background-color: rgb(230, 230, 230);
+            color: black;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -41,11 +76,44 @@
         <button class="uberButton black">Request now</button>
         <button class="uberButton gray">Schedule for later</button>
     </p>
-    <button class="button extra">Test</button>
+    <button 
+        onclick="
+            gamingClicked();
+        "class="gaming"
+    >Gaming</button>
+
+    <button 
+        onclick="
+            gamingClicked();"
+        class="music"
+    >Music</button>
+    <button 
+        onclick="
+            gamingClicked()"
+        class="tech"
+    >Tech</button>
 
     <script>
-        console.log(document.querySelector('.button').classList.contains('extra'));
-        
+        function gamingClicked(){
+            let gamingElement = document.querySelector('.gaming');
+            let musicElement = document.querySelector('.music');
+            let techElement = document.querySelector('.tech');
+
+            if(!gamingElement.classList.contains('nowClicked')){
+                gamingElement.classList.add('nowClicked');
+            }
+            else if(!musicElement.classList.contains('nowClicked')){
+                musicElement.classList.add('nowClicked');
+            }
+            else if(!techElement.classList.contains('nowClicked')){
+                techElement.classList.add('nowClicked');
+            }
+            else{
+                gamingElement.classList.remove('nowClicked');
+                musicElement.classList.remove('nowClicked');
+                techElement.classList.remove('nowClicked');
+            }
+        }
     </script>
 </body>
 </html>
